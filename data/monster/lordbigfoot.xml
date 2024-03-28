@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="lord bigfoot" nameDescription="lord bigfoot" race="blood" experience="10000" speed="120" manacost="0">
+	<health now="18500" max="18500" />
+	<look type="262" head="0" body="0" legs="0" feet="0" corpse="4398" />
+	<targetchange interval="1000" chance="10" />
+	<targetstrategy nearest="70" weakest="10" mostdamage="10" random="10" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="1" />
+		<flag canpushcreatures="1" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<attacks attack="100" skill="100">
+		<attack name="speed" speedchange="-60" duration="7000" radius="5" target="0" chance="10">
+			<attribute key="areaEffect" value="bluebubble" />
+		</attack>
+		<attack name="energy" min="-380" max="-590" length="7" spread="5" chance="15">
+			<attribute key="areaEffect" value="teleport" />
+		</attack>
+		<attack name="energy" min="-200" max="-280" radius="4" target="1" chance="6">
+			<attribute key="shootEffect" value="energy" />
+			<attribute key="areaEffect" value="energy" />
+		</attack>
+	</attacks>
+	<defenses armor="35" defense="38">
+		<defense name="healing" min="300" max="700" chance="5">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+		<defense name="speed" speedchange="50" variation="10" duration="3000" chance="4">
+			<attribute key="areaEffect" value="greenshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="0" />
+		<immunity energy="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="0" />
+		<immunity paralyze="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+	<summons maxSummons="1">
+		<summon name="frost behemoth" chance="35" max="1" />
+	</summons>
+	<voices>
+		<voice sentence="Will die for waking me up!" yell="1" />
+		<voice sentence="My power of cold will freeze you forever!" yell="1" />
+	</voices>
+	<loot>
+		<item id="3582" countmax="8" chance="700" /> <!-- ham -->
+		<item id="3577" countmax="18" chance="800" /> <!-- meat -->
+	</loot>
+</monster>

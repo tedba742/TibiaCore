@@ -1,0 +1,26 @@
+# 5 polaczen naraz na 1 IP
+iptables -A INPUT -p tcp --syn --dport 7171:7172 -m connlimit --connlimit-above 5 --connlimit-mask 32 -j REJECT --reject-with tcp-reset
+# 10 nowych polaczen na minute na 1 IP
+iptables -A INPUT -p tcp --dport 7171:7172 -m state --state NEW -m hashlimit --hashlimit-mode srcip --hashlimit-above 10/min --hashlimit-burst 10 --hashlimit-name conn_7171_rate_min -j REJECT --reject-with tcp-reset
+# 2 nowe polaczenia na sekunde na 1 IP
+iptables -A INPUT -p tcp --dport 7171:7172 -m state --state NEW -m hashlimit --hashlimit-mode srcip --hashlimit-above 2/sec --hashlimit-burst 2 --hashlimit-name conn_7171_rate_sec -j REJECT --reject-with tcp-reset
+# 150 pakietow przychodzacych na sekunde na 1 IP (149 i 150 sa specjalnie, bo iptables ma jakis problem - nie dziala - jak obie wartosci sa takie same)
+iptables -A INPUT -p tcp --dport 7171:7172 -m hashlimit --hashlimit-mode srcip --hashlimit-above 149/sec --hashlimit-burst 150 --hashlimit-name conn_7171_rate_packets_sec -j REJECT --reject-with tcp-reset
+# 10 kb transferu przychodzacego na sekunde na 1 IP, tibia moze przyslac wiele pakietow w 1 pakiecie sieciowym,
+# wiec 150 pakietow sieciowych moze zawierac 15000 pakietow do obslugi w dispatcherze, tutaj limitujemy taki spam z bota
+iptables -A INPUT -p tcp --dport 7171:7172 -m hashlimit --hashlimit-above 10kb/s --hashlimit-mode srcip --hashlimit-name bandwidth_7171_sec -j REJECT --reject-with tcp-reset
+
+# Limitação de conexões simultâneas
+iptables -A INPUT -p tcp --syn --dport 7173 -m connlimit --connlimit-above 5 --connlimit-mask 32 -j REJECT --reject-with tcp-reset
+
+# Limitação de novas conexões por minuto
+iptables -A INPUT -p tcp --dport 7173 -m state --state NEW -m hashlimit --hashlimit-mode srcip --hashlimit-above 10/min --hashlimit-burst 10 --hashlimit-name conn_7173_rate_min -j REJECT --reject-with tcp-reset
+
+# Limitação de novas conexões por segundo
+iptables -A INPUT -p tcp --dport 7173 -m state --state NEW -m hashlimit --hashlimit-mode srcip --hashlimit-above 2/sec --hashlimit-burst 2 --hashlimit-name conn_7173_rate_sec -j REJECT --reject-with tcp-reset
+
+# Limitação de pacotes recebidos por segundo
+iptables -A INPUT -p tcp --dport 7173 -m hashlimit --hashlimit-mode srcip --hashlimit-above 149/sec --hashlimit-burst 150 --hashlimit-name conn_7173_rate_packets_sec -j REJECT --reject-with tcp-reset
+
+# Limitação de largura de banda de entrada por segundo
+iptables -A INPUT -p tcp --dport 7173 -m hashlimit --hashlimit-above 10kb/s --hashlimit-mode srcip --hashlimit-name bandwidth_7173_sec -j REJECT --reject-with tcp-reset

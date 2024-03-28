@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalevents>
+	<globalevent type="startup" name="ServerStartup" script="startup.lua"/>
+	<globalevent type="record" name="PlayerRecord" script="record.lua"/>
+	<globalevent name="server save" time="04:55:00" script="serversave.lua" />
+	<globalevent name="shop" interval="30000" script="shop.lua"/>
+	<!--globalevent name="openserver" interval="2000" script="openserver.lua"/-->
+	<!--globalevent name="pvpmode" interval="1000" script="pvpmode.lua"/-->
+	<globalevent name="save" interval="3720000" script="playersave.lua" />
+	<!--globalevent name="warning" interval="10872000" script="warning.lua" /-->
+	<globalevent name="auction" interval="30000" script="auction.lua" />
+	<globalevent type="startup" name="SantaClaus" script="npcs/santaclaus.lua"/>
+	<globalevent type="startup" name="Rashid" script="npcs/rashid.lua"/>
+	<globalevent name="topweek" interval="120000" script="topweek.lua"/>
+	<!--Quest Global -->
+	<globalevent type="startup" name="GlobalStorage" script="globalstorage.lua"/>
+	<globalevent type="startup" name="SpikerSwordRook" script="quests global/spikerswordrook.lua"/>
+</globalevents>

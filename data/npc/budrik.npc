@@ -1,0 +1,42 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# budrik.npc: Datenbank für den Minenvorsteher Budrik 
+
+Name = "Budrik"
+Outfit = (160,94-76-58-95)
+Home = [32524,31906,8]
+Radius = 4
+
+Behaviour = {
+ADDRESS,"hello$",!       -> "Hiho, Hiho %N."
+ADDRESS,"hi$",!          -> *
+ADDRESS,"hiho$",!        -> *
+ADDRESS,!                -> Idle
+BUSY,"hello$",!          -> "Just a minute %N!", Queue
+BUSY,"hi$",!             -> *
+BUSY,"hiho$",!           -> *
+BUSY,!                   -> NOP
+VANISH,!                 -> "Bye, bye."
+
+"bye"           -> "Bye, bye.", Idle
+"job"           -> "I am the foreman of this mine."
+"shop"          -> *
+"name"          -> "My name is Budrik Deepdigger, son of Earth, from the Molten Rock."
+"time"          -> "Precisely %T, young one."
+"help"          -> "I am a miner, ask someone else."
+"dwarfs"        -> "We understand the ways of the earth like nobody else does."
+"monster"       -> "In the deeper mines we discover some nasty beasts now and then."
+"dungeon"       -> "This is no funhouse. Leave the miners and their drilling-worms alone and get out! We have already enough trouble without you."
+"mines"         -> *
+"trouble"       -> "The Horned Fox is leading his bandits in sneak attacks and raids on us."
+"horned","fox"  -> "A minotaur they threw out at Mintwallin. He must have some kind of hideout nearby."
+"hideout"       -> "The hideout of the Horned Fox is probably a dangerous if not lethal place for the unexperienced ones."
+
+"mission",QuestValue(4484)=3 -> "I have no more service for you."
+"mission",QuestValue(4484)=1 -> "You still haven't done this favor!"
+"mission",QuestValue(4484)=0 -> "Funny that you are asking me for a mission! There is indeed something you can do for me. Ever heard about The Horned Fox? Anyway, yesterday his gang has stolen my mining helmet during a raid. ...",
+								   "It belonged to my father and before that to my grandfather. That helmet is at least 600 years old! I need it back. Are you willing to help me?",Topic=1
+Topic=1,"yes", -> "I knew you have the guts for that task! We presume the hideout of The Horned Fox somewhere in the south-west near the coast. Good luck", SetQuestValue(4484,1)
+"mission",QuestValue(4484)=2, Count(4396)>=1, -> "As I was just saying to the others, 'this brave fellow will bring me my mining helmet back' and here you are with it!! Here take my spare helmet, I don't need it anymore!", Amount=1, Delete(4396), Amount=1, Create(4396), SetQuestValue(4484,3)
+
+
+}

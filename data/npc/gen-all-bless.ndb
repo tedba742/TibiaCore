@@ -1,0 +1,11 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-all-bless.ndb:  Datenbank Blessers
+
+"bless",QuestValue(44)=1,Count(3215)>0  -> "I will give to you all the bless of tibia, but you will have to make a sacrifice. Are you prepared to pay 45.000 gold for the blessing?.",Price=45000, Topic=8
+"bless",  								-> "I will give to you all the bless of tibia, but you will have to make a sacrifice. Are you prepared to pay 50.000 gold for the blessing?.",Price=50000, Topic=8
+
+Topic=8,"yes",QuestValue(4441)=0,!		-> "Sorry, you are not privileged for these benefits."
+Topic=8,"yes",QuestValue(101)>0,QuestValue(102)>0,QuestValue(103)>0,QuestValue(104)>0,QuestValue(105)>0,!		-> "You already possess this blessing."
+Topic=8,"yes",CountMoney<Price,!		-> "Oh. You do not have enough money."
+Topic=8,"yes"                           -> "So receive the all the bless of tibia, pilgrim", DeleteMoney, EffectOpp(13),SetQuestValue(101,1),SetQuestValue(102,1),SetQuestValue(103,1),SetQuestValue(104,1),SetQuestValue(105,1),Bless(1),Bless(2),Bless(3),Bless(4),Bless(5) 
+Topic=8                                 -> "Maybe another time."

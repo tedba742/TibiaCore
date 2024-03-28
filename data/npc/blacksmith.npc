@@ -1,0 +1,179 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# iwar.npc: Möbelverkäufer Iwar in Kazordoon
+
+Name = "Dwarf Blacksmith"
+Outfit = (160,53-109-64-76)
+Home = [32632,31906,8]
+Radius = 5
+
+Behaviour = {
+
+ADDRESS,"hello$",! -> "Be careful where you walk, you'll get burned!"
+ADDRESS,"hi$",!    -> "Be careful where you walk, you'll get burned!"
+ADDRESS,"hiho$",!  -> "Be careful where you walk, you'll get burned!"
+
+ADDRESS,"hello$",QuestValue(4484)=3,! -> "Hiho %N! Welcome to Kazordoon and my warm forge."
+ADDRESS,"hi$",QuestValue(4484)=3,!    -> *
+ADDRESS,"hiho$",QuestValue(4484)=3,!  -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",QuestValue(4484)=3,!    -> "One moment, %N, me busy.", Queue
+BUSY,"hi$",QuestValue(4484)=3,!       -> *
+BUSY,"hiho$",QuestValue(4484)=3,!     -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Guut bye."
+
+"bye"      -> "Guut bye.", Idle
+"farewell" -> *
+"name"     -> "Me is Iwar Woodpecker, son of Earth, from the Savage Axes. Me run this store."
+"offer"           -> "I can make weapons and armor."
+"goods"           -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+"equipment"       -> *
+"job"      		  -> *
+"special"         -> "Bring me a rare bar and I'll do my best..."
+
+"brass","armor",QuestValue(4484)=4, -> "Do you want me to make a brass armor? I will need 3 copper bars!", Topic=1
+Topic=1,"yes",Count(4496)>=3, -> "here it is, watch out it's hot.", Amount=3, Delete(4496), Amount=1, Create(3359)
+Topic=1          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"brass","legs",QuestValue(4484)=4, -> "Do you want me to make a brass legs? I will need 2 copper bars!", Topic=2
+Topic=2,"yes",Count(4496)>=2, -> "here it is, watch out it's hot.", Amount=2, Delete(4496), Amount=1, Create(3372)
+Topic=2          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"brass","shield",QuestValue(4484)=4, -> "Do you want me to make a brass shield? I will need 2 copper bars!", Topic=3
+Topic=3,"yes",Count(4496)>=2, -> "here it is, watch out it's hot.", Amount=2, Delete(4496), Amount=1, Create(3411)
+Topic=3          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"brass","helmet",QuestValue(4484)=4, -> "Do you want me to make a brass helmet? I will need 1 copper bars!", Topic=4
+Topic=4,"yes",Count(4496)>=1, -> "here it is, watch out it's hot.", Amount=1, Delete(4496), Amount=1, Create(3354)
+Topic=4          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"plate","armor",QuestValue(4484)=4, -> "Do you want me to make a plate armor? I will need 3 iron bars!", Topic=5
+Topic=5,"yes", Count(4498)>=3, -> "here it is, watch out it's hot.", Amount=3, Delete(4498), Amount=1, Create(3357)
+Topic=5          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"plate","legs",QuestValue(4484)=4, -> "Do you want me to make a plate legs? I will need 2 iron bars!", Topic=6
+Topic=6,"yes", Count(4498)>=2, -> "here it is, watch out it's hot.", Amount=2, Delete(4498), Amount=1, Create(3557)
+Topic=6          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"steel","helmet",QuestValue(4484)=4, -> "Do you want me to make a steel helmet? I will need 2 iron bars!", Topic=7
+Topic=7,"yes", Count(4498)>=2, -> "here it is, watch out it's hot.", Amount=2, Delete(4498), Amount=1, Create(3351)
+Topic=7          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"steel","shield",QuestValue(4484)=4, -> "Do you want me to make a steel shield? I will need 1 iron bars!", Topic=8
+Topic=8,"yes", Count(4498)>=1, -> "here it is, watch out it's hot.", Amount=1, Delete(4498), Amount=1, Create(3409)
+Topic=8          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"war","hammer",QuestValue(4484)=4, -> "Do you want me to make a war hammer? I will need 15 iron bars!", Topic=9
+Topic=9,"yes", Count(4498)>=15, -> "here it is, watch out it's hot.", Amount=15, Delete(4498), Amount=1, Create(3279)
+Topic=9          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"dragon","hammer",QuestValue(4484)=4, -> "Do you want me to make a dragon hammer? I will need 8 iron bars!", Topic=10
+Topic=10,"yes", Count(4498)>=8, -> "here it is, watch out it's hot.", Amount=8, Delete(4498), Amount=1, Create(3322)
+Topic=10          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"battle","hammer",QuestValue(4484)=4, -> "Do you want me to make a battle hammer? I will need 3 copper bars!", Topic=11
+Topic=11,"yes", Count(4496)>=3, -> "here it is, watch out it's hot.", Amount=3, Delete(4496), Amount=1, Create(3305)
+Topic=11          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"dwarven","shield",QuestValue(4484)=4, -> "Do you want me to make a dwarven shield? I will need 3 copper bars!", Topic=12
+Topic=12,"yes", Count(4496)>=3, -> "here it is, watch out it's hot.", Amount=3, Delete(4496), Amount=1, Create(3425)
+Topic=12          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"dwarven","axe",QuestValue(4484)=4, -> "Do you want me to make a dwarven axe? I will need 5 copper bars and 7 iron bars!", Topic=13
+Topic=13,"yes", Count(4496)>=5, Count(4498)>=7, -> "here it is, watch out it's hot.", Amount=5, Delete(4496), Amount=7, Delete(4498), Amount=1, Create(3323)
+Topic=13          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"knight","axe",QuestValue(4484)=4, -> "Do you want me to make a knight axe? I will need 10 copper bars and 10 iron bars!", Topic=14
+Topic=14,"yes", Count(4496)>=10, Count(4498)>=10, -> "here it is, watch out it's hot.", Amount=10, Delete(4496), Amount=10, Delete(4498), Amount=1, Create(3318)
+Topic=14          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"serpent","sword",QuestValue(4484)=4, -> "Do you want me to make a serpent sword? I will need 2 copper bars and 2 iron bars!", Topic=15
+Topic=15,"yes", Count(4496)>=2, Count(4498)>=2, -> "here it is, watch out it's hot.", Amount=2, Delete(4496), Amount=2, Delete(4498), Amount=1, Create(3297)
+Topic=15          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"giant","sword",QuestValue(4484)=4, -> "Do you want me to make a giant sword? I will need 20 iron bars and 10 wolfram bars!", Topic=16
+Topic=16,"yes", Count(4498)>=20, Count(4443)>=10, -> "here it is, watch out it's hot.", Amount=20, Delete(4498), Amount=10, Delete(4443), Amount=1, Create(3281)
+Topic=16          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"dragon","lance",QuestValue(4484)=4, -> "Do you want me to make a dragon lance? I will need 15 iron bars and 16 wolfram bars!", Topic=17
+Topic=17,"yes", Count(4498)>=15, Count(4443)>=16, -> "here it is, watch out it's hot.", Amount=15, Delete(4498), Amount=16, Delete(4443), Amount=1, Create(3302)
+Topic=17          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"steel","boots",QuestValue(4484)=4, -> "Do you want me to make a steel boots? I will need 30 iron bars and 20 wolfram bars!", Topic=18
+Topic=18,"yes", Count(4498)>=30, Count(4443)>=20, -> "here it is, watch out it's hot.", Amount=30, Delete(4498), Amount=20, Delete(4443), Amount=1, Create(3554)
+Topic=18          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"knight","armor",QuestValue(4484)=4, -> "Do you want me to make a knight armor? I will need 10 copper bars, 10 iron bars and 2 gold bars!", Topic=19
+Topic=19,"yes", Count(4496)>=10, Count(4498)>=10, Count(4444)>=2,  -> "here it is, watch out it's hot.", Amount=10, Delete(4496), Amount=10, Delete(4498), Amount=2, Delete(4444), Amount=1, Create(3370)
+Topic=19          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"knight","legs",QuestValue(4484)=4, -> "Do you want me to make a knight legs? I will need 9 copper bars, 11 iron bars and 2 gold bars!", Topic=20
+Topic=20,"yes", Count(4496)>=9, Count(4498)>=11, Count(4444)>=2,  -> "here it is, watch out it's hot.", Amount=9, Delete(4496), Amount=11, Delete(4498), Amount=2, Delete(4444), Amount=1, Create(3371)
+Topic=20          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"crusader","helmet",QuestValue(4484)=4, -> "Do you want me to make a crusader helmet? I will need 5 copper bars, 10 iron bars and 3 gold bars!", Topic=21
+Topic=21,"yes", Count(4496)>=5, Count(4498)>=10, Count(4444)>=3,  -> "here it is, watch out it's hot.", Amount=5, Delete(4496), Amount=10, Delete(4498), Amount=3, Delete(4444), Amount=1, Create(3391)
+Topic=21          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"warrior","helmet",QuestValue(4484)=4, -> "Do you want me to make a warrior helmet? I will need 7 copper bars and 13 iron bars!", Topic=22
+Topic=22,"yes", Count(4496)>=7, Count(4498)>=13,  -> "here it is, watch out it's hot.", Amount=7, Delete(4496), Amount=13, Delete(4498), Amount=1, Create(3369)
+Topic=22          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"guardian","shield",QuestValue(4484)=4, -> "Do you want me to make a guardian shield? I will need 5 copper bars and 9 iron bars!", Topic=23
+Topic=23,"yes", Count(4496)>=5, Count(4498)>=9,  -> "here it is, watch out it's hot.", Amount=5, Delete(4496), Amount=9, Delete(4498), Amount=1, Create(3415)
+Topic=23          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"tower","shield",QuestValue(4484)=4, -> "Do you want me to make a tower shield? I will need 25 copper bars and 10 iron bars!", Topic=24
+Topic=24,"yes", Count(4496)>=25, Count(4498)>=10,  -> "here it is, watch out it's hot.", Amount=25, Delete(4496), Amount=10, Delete(4498), Amount=1, Create(3428)
+Topic=24          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"crown","armor",QuestValue(4484)=4, -> "Do you want me to make a crown armor? I will need 20 copper bars, 10 iron bars and 5 gold bars!", Topic=25
+Topic=25,"yes", Count(4496)>=20, Count(4498)>=10, Count(4444)>=5, -> "here it is, watch out it's hot.", Amount=20, Delete(4496), Amount=10, Delete(4498), Amount=5, Delete(4444), Amount=1, Create(3381)
+Topic=25          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"crown","legs",QuestValue(4484)=4, -> "Do you want me to make a crown legs? I will need 18 copper bars, 10 iron bars and 7 gold bars!", Topic=26
+Topic=26,"yes", Count(4496)>=18, Count(4498)>=10, Count(4444)>=7, -> "here it is, watch out it's hot.", Amount=18, Delete(4496), Amount=10, Delete(4498), Amount=7, Delete(4444), Amount=1, Create(3382)
+Topic=26          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"crown","shield",QuestValue(4484)=4, -> "Do you want me to make a crown shield? I will need 15 copper bars, 8 iron bars and 5 gold bars!", Topic=27
+Topic=27,"yes", Count(4496)>=15, Count(4498)>=8, Count(4444)>=5, -> "here it is, watch out it's hot.", Amount=15, Delete(4496), Amount=8, Delete(4498), Amount=5, Delete(4444), Amount=1, Create(3419)
+Topic=27          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"crown","helmet",QuestValue(4484)=4, -> "Do you want me to make a crown helmet? I will need 5 copper bars, 3 iron bars and 2 gold bars!", Topic=28
+Topic=28,"yes", Count(4496)>=5, Count(4498)>=3, Count(4444)>=2, -> "here it is, watch out it's hot.", Amount=5, Delete(4496), Amount=3, Delete(4498), Amount=2, Delete(4444), Amount=1, Create(3385)
+Topic=28          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"golden","armor",QuestValue(4484)=4, -> "Do you want me to make a golden armor? I will need 10 iron bars, 20 gold bars and 5 wolfram bars!", Topic=29
+Topic=29,"yes", Count(4498)>=10, Count(4444)>=20, Count(4443)>=5, -> "here it is, watch out it's hot.", Amount=10, Delete(4498), Amount=20, Delete(4444), Amount=5, Delete(4443), Amount=1, Create(3360)
+Topic=29          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"golden","legs",QuestValue(4484)=4, -> "Do you want me to make a golden legs? I will need 10 iron bars, 20 gold bars and 15 wolfram bars!", Topic=30
+Topic=30,"yes", Count(4498)>=10, Count(4444)>=20, Count(4443)>=15, -> "here it is, watch out it's hot.", Amount=10, Delete(4498), Amount=20, Delete(4444), Amount=15, Delete(4443), Amount=1, Create(3364)
+Topic=30          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"steel","pickaxe",QuestValue(4484)=4 -> Type=4484, Amount=1, Price=3000, "I have a steel pickaxe, it would handle its job well. but it would cost 3000 gold coins, will you want it?", Topic=31
+Topic=31,"yes", CountMoney>=Price -> "here it is, watch out it's hot.", DeleteMoney, Create(Type)
+Topic=31          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"golden","pickaxe",QuestValue(4484)=4 -> "Uhm... I need 10 iron bars and 10 gold bars, and your old pickaxe in exchange, will you want it?", Topic=32
+Topic=32,"yes", Count(4498)>=10, Count(4444)>=10, Count(4484)>=1,  -> "here it is, watch out it's hot.", Amount=10, Delete(4498), Amount=10, Delete(4444), Amount=1, Delete(4484), Amount=1, Create(4485)
+Topic=32          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"abyss","pickaxe",QuestValue(4484)=4 -> "It is a rare pickaxe, and very efficient at work. but unfortunately it is a rare ore.", Topic=33
+Topic=33,"i","have" -> "Seriously? so i will need 10 iron bars, 5 wolfram bars and for my work i want your gold pickaxe in exchange. done deal?", Topic=34
+Topic=34,"yes", Count(4498)>=10, Count(4443)>=10, Count(4485)>=1,  -> "here it is, watch out it's hot.", Amount=10, Delete(4498), Amount=5, Delete(4443), Amount=1, Delete(4485), Amount=1, Create(4486)
+Topic=34          -> "Don't interrupt me for anything, otherwise the piece will go cold..."
+
+"mission",QuestValue(4484)<3 -> "I'll let you use my smithy and help you make weapons, shields and armor, but if you help my brother Budrik, in a mine to the west."
+"mission",QuestValue(4484)=3 -> "Okay, I see I even got a miner's helmet, now you can buy a steel pickaxe and become a crafting master.", SetQuestValue(4484,4)
+"mission",QuestValue(4484)=4 -> "All done friend, now let's get to our creativity!"
+
+
+}
+
+# 4496 copper bar
+# 4498 iron bar
+# 4444 gold bar
+# 4443 wolfram bar

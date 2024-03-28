@@ -1,0 +1,72 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# gen-santaclaus.ndb: santaclaus.npc
+
+ADDRESS,"hello$",!   -> "Merry Christmas, little %N."
+ADDRESS,"hi$",!      -> *
+ADDRESS,!            -> Idle
+BUSY,"hello$",!      -> "One moment please %N. You're next in line", Queue
+BUSY,"hi$",!         -> *
+BUSY,!               -> NOP
+VANISH,!             -> "Thank you too, little %N, for coming to see me this year."
+
+"Merry","Christmas"	 -> "Ho ho hoo! Merry Christmas!", Topic=1
+
+#====================GOOD LUCK========================
+Topic=1,"present", QuestValue(4404)=0						-> Amount=10, Create(3599),"Here is your present! Enjoy!", SetQuestValue(4404,1),
+Amount=10, Create(2992)								# 10 candy cane, 10 snowball.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<37		-> Amount=10, Create(3599),"Here is your present! Enjoy!", SetQuestValue(4404,1),
+Amount=1, Create(2995)								# 10 candy cane, piggy bank.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<39		-> Amount=1, Create(3051),"Here is your present! Enjoy!", SetQuestValue(4404,1),
+Amount=1, Create(3097), Amount=1, Create(3098)		# energy ring, dwaven ring, ring of healing.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<38		-> CreateContainer(2859,2874,11),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bag life fluid
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<33		-> CreateContainer(2860,2874,10),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bag mana fluid
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<22		-> Amount=1, Create(3039),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# red gem.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<24		-> Amount=1, Create(3036),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# violet gem.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<23		-> Amount=1, Create(3057),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# amulet of loss.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<21		-> Amount=1, Create(5080),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# panda bear.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<15		-> Amount=1, Create(2993),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# teddy bear.
+# Topic=1,"present", QuestValue(4404)=0, Random(1,100)<13		-> Amount=1, Create(4404),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# red old backpack.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<11		-> Amount=1, Create(3001),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bear doll.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<8		-> Amount=1, Create(3553),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bunnyslippers.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<6          -> Amount=1, Create(3564),"Here is your present! Enjoy!", SetQuestValue(4404,1)         # red tunic
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<4		-> Amount=1, Create(3570),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# ball gown.
+Topic=1,"present", QuestValue(4404)=0, Random(1,100)<3		-> Amount=1, Create(3549),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# soft boots
+
+#====================LOW LUCK========================
+"present", QuestValue(4404)=0						-> Amount=10, Create(3599),"Here is your present! Enjoy!", SetQuestValue(4404,1),
+Amount=10, Create(2992)								# 10 candy cane, 10 snowball.
+"present", QuestValue(4404)=0, Random(1,100)<37		-> Amount=10, Create(3599),"Here is your present! Enjoy!", SetQuestValue(4404,1),
+Amount=1, Create(2995)								# 10 candy cane, piggy bank.
+"present", QuestValue(4404)=0, Random(1,100)<36		-> Amount=1, Create(3051),"Here is your present! Enjoy!", SetQuestValue(4404,1),
+Amount=1, Create(3097), Amount=1, Create(3098)		# energy ring, dwaven ring, ring of healing.
+"present", QuestValue(4404)=0, Random(1,100)<35		-> CreateContainer(2859,2874,11),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bag life fluid
+"present", QuestValue(4404)=0, Random(1,100)<30		-> CreateContainer(2860,2874,10),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bag mana fluid
+"present", QuestValue(4404)=0, Random(1,100)<22		-> Amount=1, Create(3039),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# red gem.
+"present", QuestValue(4404)=0, Random(1,100)<21		-> Amount=1, Create(3036),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# violet gem.
+"present", QuestValue(4404)=0, Random(1,100)<20		-> Amount=1, Create(3057),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# amulet of loss.
+"present", QuestValue(4404)=0, Random(1,100)<18		-> Amount=1, Create(5080),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# panda bear.
+"present", QuestValue(4404)=0, Random(1,100)<12		-> Amount=1, Create(2993),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# teddy bear.
+# "present", QuestValue(4404)=0, Random(1,100)<10		-> Amount=1, Create(4404),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# red old backpack.
+"present", QuestValue(4404)=0, Random(1,100)<8		-> Amount=1, Create(3001),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bear doll.
+"present", QuestValue(4404)=0, Random(1,100)<5          -> Amount=1, Create(3564),"Here is your present! Enjoy!", SetQuestValue(4404,1)         # red tunic
+"present", QuestValue(4404)=0, Random(1,100)<4		-> Amount=1, Create(3553),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# bunnyslippers.
+"present", QuestValue(4404)=0, Random(1,100)<3		-> Amount=1, Create(3570),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# ball gown.
+"present", QuestValue(4404)=0, Random(1,100)<2		-> Amount=1, Create(3549),"Here is your present! Enjoy!", SetQuestValue(4404,1)		# soft boots
+
+"present", QuestValue(4404)>0						-> "You already got your present! Don't be greedy!"
+
+"job" 		   -> "Ho ho ho! You don't know Santa Claus? Never mind. You may ask me for a present."
+"bye"          -> "Ho Ho Ho... I look forward to seeing you again!", Idle
+"farewell"     -> *
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "You had a few hard times last year, I know. Considering all that you did well and I'm proud of you.", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "You're one of my favourite children, little %N. But pssht, don't tell the others! I love all of you, of course.", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "Oh, little %N, watching you from above always makes my heart smile. I'll be looking forward to seeing you next Christmas!", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "Yes, you should thank me! I ignored that evil thing you did last year and gave you a present anyway. You know what I mean.", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "You've been so good during the last year that I was almost tempted to give you a Ferumbras' hat. But I didn't want to make the other children jealous.", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "Keep up this friendliness and politeness and we shall see about a really cool present next year!", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "Oh - you absolutely deserve it! You've behaved really well this year. Almost no bad things about you in my book!", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "Your good and bad deeds are pretty balanced. If you try and lean more towards the good side, I'll consider giving you a really nice present next year!", Idle
+"thank","you", QuestValue(4404)=1, Random(1,10)<4  -> SetQuestValue(4404,2), "May the coming year be full of joy, happiness and love for you! You don't always have to be on the tough side, you know.", Idle
+"thank","you", QuestValue(4404)=1				   -> SetQuestValue(4404,2), "Thank you too, little %N, for coming to see me this year.", Idle
+
+"vega"         -> "It's a small Nordic island always snowing, my home."

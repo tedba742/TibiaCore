@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<monster name="Crystal Spider" nameDescription="a crystal spider" race="undead" experience="1200" speed="100" manacost="0">
+  <health now="1500" max="1500" />
+  <look type="266" head="0" body="0" legs="0" feet="0" corpse="5160" />
+  <targetchange interval="1000" chance="10" />
+  <targetstrategy nearest="70" weakest="20" mostdamage="500" random="10" />
+  <flags>
+    <flag summonable="0" />
+    <flag attackable="1" />
+    <flag hostile="1" />
+    <flag illusionable="0" />
+    <flag convinceable="0" />
+    <flag pushable="0" />
+    <flag canpushitems="1" />
+    <flag canpushcreatures="1" />
+    <flag targetdistance="1" />
+    <flag runonhealth="0" />
+  </flags>
+  <attacks attack="50" skill="80">
+    <!-- ja editado -->
+    <attack name="speed" speedchange="-50" variation="10" duration="10000" range="7" chance="6">
+      <attribute key="areaEffect" value="redshimmer" />
+    </attack>
+    <attack name="energy" min="-55" max="-95" range="6" chance="8">
+      <attribute key="shootEffect" value="energy" />
+      <attribute key="areaEffect" value="energy" />
+    </attack>
+  </attacks>
+  <defenses armor="28" defense="30">
+    <!-- ja editado -->
+    <defense name="speed" speedchange="60" variation="10" duration="10000" chance="5">
+      <attribute key="areaEffect" value="redshimmer" />
+    </defense>
+  </defenses>
+  <immunities>
+    <immunity fire="1" />
+    <immunity outfit="1" />
+    <immunity lifedrain="1" />
+    <immunity poison="1" />
+    <immunity invisible="1" />
+  </immunities>
+  <loot>
+    <item id="3031" countmax="55" chance="733" />
+    <!-- a gold coin -->
+    <item id="3031" countmax="33" chance="866" />
+    <!-- a gold coin -->
+    <item id="3031" countmax="11" chance="999" />
+    <!-- a gold coin -->
+    <item id="3370" countmax="1" chance="7" />
+    <!-- a knight armor -->
+    <item id="3371" countmax="1" chance="4" />
+    <!-- knight legs -->
+    <item id="3357" countmax="1" chance="100" />
+    <!-- a plate armor -->
+    <item id="3055" countmax="1" chance="2" />
+    <!-- a platinum amulet -->
+    <item id="3351" countmax="1" chance="100" />
+    <!-- a steel helmet -->
+    <item id="3053" countmax="1" chance="9" />
+    <!-- a time ring -->
+    <item id="4400" countmax="1" chance="1" />
+    <!-- shock helmet -->
+  </loot>
+</monster>

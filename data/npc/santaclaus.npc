@@ -1,0 +1,12 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# santaclaus.npc: Möbelverkäufer Santa Claus in Tibia
+
+Name = "Santa Claus"
+
+# Outfit = (looktype,head-body-legs-feet)
+Outfit = (160,0-93-93-114)
+
+Behaviour = {
+@"gen-santaclaus.ndb"
+}
+

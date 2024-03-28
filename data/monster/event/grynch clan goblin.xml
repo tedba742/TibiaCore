@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="grynch clan goblin" nameDescription="a grynch clan goblin" race="blood" experience="25" speed="100" manacost="290">
+	<health now="80" max="80" />
+	<look type="61" head="0" body="0" legs="0" feet="0" corpse="4121" />
+	<targetchange interval="1000" chance="0" />
+	<targetstrategy nearest="100" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="1" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="1" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="8" />
+		<flag runonhealth="10" />
+	</flags>
+	<attacks attack="8" skill="15">
+		<attack name="physical" min="-25" max="-25" range="7" chance="12">
+			<attribute key="shootEffect" value="smallstone" />
+		</attack>
+	</attacks>
+	<defenses armor="7" defense="8">
+	<defense name="speed" speedchange="130" variation="20" duration="3000" chance="3">
+			<attribute key="areaEffect" value="redshimmer" />
+		</defense>
+	</defenses>
+	<voices>
+		<voice sentence="T'was not me hand in your pocket!"/>
+		<voice sentence="Look! Cool stuff in house. Let's get it!"/>
+		<voice sentence="Uhh! Nobody home!"/>
+		<voice sentence="Me just borrowed it!"/>
+		<voice sentence="Me no steal! Me found it!"/>
+		<voice sentence="Me had it for five minutes. It's family heirloom now!"/>
+		<voice sentence="Nice human won't hurt little, good goblin?"/>
+		<voice sentence="Gimmegimme!"/>
+		<voice sentence="Invite me in you lovely house plx!"/>
+		<voice sentence="Other Goblin stole it!"/>
+		<voice sentence="All presents mine!"/>
+		<voice sentence="Me got ugly ones purse"/>
+		<voice sentence="Free itans plz!"/>
+		<voice sentence="Not me! Not me!"/>
+		<voice sentence="Guys, help me here! Guys? Guys???"/>
+		<voice sentence="That only much dust in me pocket! Honest!"/>
+		<voice sentence="Can me have your stuff?"/>
+	</voices>
+	<loot>
+		<item id="5090" countmax="1" chance="1"/>
+		<item id="3218" countmax="1" chance="100"/>
+	</loot>
+</monster>

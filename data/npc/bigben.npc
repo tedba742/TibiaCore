@@ -1,0 +1,81 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# bigben.npc: Datenbank für den Zyklopenschmied Ben (Elfenstadt)
+
+Name = "A Sweaty Cyclops"
+Outfit = (22,0-0-0-0)
+Home = [32697,31674,3]
+Radius = 2
+
+Behaviour = {
+ADDRESS,"hello$",! -> "Hum Humm! Welcume lil' %N."
+ADDRESS,"hi$",!    -> *
+ADDRESS,!          -> Idle
+BUSY,"hello$",!    -> "%N waits. Me talks.", Queue
+BUSY,"hi$",!       -> *
+BUSY,!             -> NOP
+VANISH,!           -> "Hum Humm."
+
+"bye"            -> "Good bye lil' one.", Idle
+"farewell"       -> *
+"job"            -> "I am smith."
+"name"           -> "I called Bencthyclthrtrprr by me people. Lil' ones me call Big Ben."
+
+"tibia"          -> "One day I'll go and look."
+"ab'dendriel"    -> "Me parents live here before town was. Me not care about lil' ones." 
+"big","old"      -> "Mountain in south. Lil' lil' ones living there."
+"elves"          -> "Me not fight them, they not fight me."
+"humans"         -> "Always asking me for stuff they can't afford." 
+"orcs"           -> "Silly ones. Not talk much. Always screaming and hitting." 
+"minotaurs"      -> "They were friend with me parents. Long before elves here, they often made visit. No longer come here."
+"dwarfs"         -> "Lil' lil' ones are so fun. We often chat."
+"lil","lil"      -> *
+"god"            -> "You shut up. Me not want to hear."
+"smith"          -> "Working steel is my profession." 
+"steel"          -> "Manny kinds of. Like Mesh Kaha Rogh, Za'Kalortith, Uth'Byth, Uth'Morc, Uth'Amon, Uth'Maer, Uth'Doon, and Zatragil"
+
+"Mesh","Kaha","Rogh" -> "Steel that is singing when forged. No one knows where find today."
+"Za'Kalortith"       -> "It's evil. Demon iron is. No good cyclops goes where you can find and need evil flame to melt."
+"Uth'Byth"           -> "Not good to make stuff off. Bad steel it is. But eating magic, so useful is."
+"Uth'Morc"           -> "Lil' ones it thieves' steel call sometimes. It's dark and making not much noise."
+"Uth'Amon"           -> "Brigthsteel is. Much art made with it. Sorcerers to lazy and afraid to enchant much."
+"Uth'Maer"           -> "Heartiron from heart of big old mountain, found very deep. Lil' lil ones fiercely defend. Not wanting to have it used for stuff but holy stuff."
+"Uth'Doon"           -> "It's high steel called. Only lil' lil' ones know how make."
+"Zatragil"           -> "Most ancients use dream silver for different stuff. Now ancients most gone. Most not know about."
+
+"Teshial"        -> "Is one of elven family or such thing. Me not understand lil' ones and their busisness."
+"Deraisim"       -> *
+"Cenath"         -> *
+"Kuridai"        -> *
+
+"cyclops"        -> "Me people not live here much. Most are far away."
+"excalibug"      -> "Me wish I could make weapon like it."
+"great","axe"	   -> "Only lil' lil' ones know how make..."
+
+"fire","sword"         -> "Do lil' one want to trade a fire sword?", topic=1  
+"serpent","sword"      -> "Do lil' one want to trade a serpent sword?", topic=1 
+"dragon","shield"      -> "Do lil' one want to trade a dragon shield?", topic=1 
+
+"bright","sword"        -> "Do lil' one want to trade a bright sword?", topic=2
+"sword","of","valor"   -> "Do lil' one want to trade a sword of valor?", topic=3 
+"warlord","sword"	   -> "Do lil' one want to trade a warlord sword?", Topic=5
+
+Topic=1,"yes" -> "You not have stuff me want for."
+Topic=1       -> "Silly lil' one you are."
+
+Topic=2,"yes",Count(4472)>=1 -> Amount=Count(4472), Amount=1, Create(3295), "Here you are the bright sword, forged by very rare stone", Amount=1, Delete(4472)
+Topic=2,"yes" -> "You not have stuff me want for."
+
+Topic=3,"yes",Count(4470)>=1 -> Amount=Count(4470), "I don't like this demon iron, I need dream silver and an heart iron to break the curse and forge it, do you have them?", topic=4
+Topic=3,"yes" -> "You not have stuff me want for."
+Topic=4,"yes",Count(4470)>=1,Count(4471)>=1,Count(4473)>=1 -> Amount=1, Create(3288), "Here you are the sword of valor, forged by very rare stone", Amount=1,Delete(4470), Amount=1,Delete(4471), Amount=1,Delete(4473)
+Topic=4,"yes",Count(4470)>=1,Count(4473)=0 -> "Hum Humm! Dream Silver..."
+Topic=4,"yes",Count(4470)>=1,Count(4471)=0 -> "Hum Humm! Heartiron..."
+Topic=4,"yes" -> "You not have stuff me want for."
+
+Topic=5,"yes",Count(4472)>=1,Count(4473)>=1,Count(3036)>=1,Count(3037)>=1,Count(3038)>=1,Count(3039)>=1,Count(3041)>=1,Count(3295)>=1 -> Amount=1, Create(3296), "Here you are the good sword, forged by very rare stone",
+Amount=1,Delete(4472), Amount=1,Delete(4473), Amount=1,Delete(3037), Amount=1,Delete(3038), Amount=1,Delete(3041), Amount=1,Delete(3036), Amount=1,Delete(3039), Amount=1,Delete(3295)
+Topic=5,"yes",Count(4472)>=1, -> "Hum Humm! Dream Silver..."
+Topic=5,"yes",Count(4472)>=1,Count(4473)>=1 -> "Hum Humm! Gems one Brightlight..."
+Topic=5,"yes" -> "You not have stuff me want for."
+
+}

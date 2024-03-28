@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+<monster name="star" nameDescription="a star" race="undead" experience="10000" speed="0" manacost="0">
+	<health now="0" max="0" />
+	<look typeex="5098" head="0" body="0" legs="0" feet="0" corpse="5098" />
+	<targetchange interval="0" chance="0" />
+	<targetstrategy nearest="0" weakest="0" mostdamage="0" random="0" />
+	<flags>
+		<flag summonable="0" />
+		<flag attackable="1" />
+		<flag hostile="0" />
+		<flag illusionable="0" />
+		<flag convinceable="0" />
+		<flag pushable="0" />
+		<flag canpushitems="0" />
+		<flag canpushcreatures="0" />
+		<flag targetdistance="1" />
+		<flag runonhealth="0" />
+	</flags>
+	<defenses armor="0" defense="0">
+		<defense name="healing" min="-1" max="-1" chance="1">
+			<attribute key="areaEffect" value="blueshimmer" />
+		</defense>
+	</defenses>
+	<immunities>
+		<immunity fire="1" />
+		<immunity energy="1" />
+		<immunity outfit="1" />
+		<immunity lifedrain="1" />
+		<immunity poison="1" />
+		<immunity invisible="1" />
+	</immunities>
+</monster>

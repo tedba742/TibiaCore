@@ -1,0 +1,36 @@
+# GIMUD - Graphical Interface Multi User Dungeon
+# Rashid.npc: Datenbank für den Rashidschmied Rashid (Waffen und Rüstungen, world)
+
+Name = "Rashid"
+Outfit = (132,58-118-119-115)
+
+Behaviour = {
+
+ADDRESS,"hello$",!      -> "No chance, doesn't want me to trade with strangers.", Idle
+ADDRESS,"hi$",!         -> *
+ADDRESS,"greetings$",!  -> *
+ADDRESS,!     			-> Idle
+
+ADDRESS,"hello$",QuestValue(279)=1,!      -> "What do you want from me, %N?"
+ADDRESS,"hi$",QuestValue(279)=1,!         -> *
+ADDRESS,"greetings$",QuestValue(279)=1,!  -> *
+ADDRESS,!          						  -> Idle
+BUSY,"hello$",QuestValue(279)=1,!         -> "I am already talking to one of you creeps. So shut up until it is your turn, %N.", Queue
+BUSY,"hi$",QuestValue(279)=1,!            -> *
+BUSY,"greetings$",QuestValue(279)=1,!     -> *
+BUSY,QuestValue(279)=1,!                  -> NOP
+VANISH                                    -> "cya..."                     
+
+"bye"           -> "Daraman's blessings.", Idle
+"farewell"      -> *
+
+"offer"           -> "I buy weapons, armors, helmets, legs, and shields... and I sell collor backpacks, dark armor, dark helmet and throwing stars!"
+"goods"           -> *
+"smith"           -> *
+"equipment"       -> *
+"do","you","sell" -> *
+"do","you","have" -> *
+
+@"gen-rashid.ndb"
+}
+#=======================================================================================================================
