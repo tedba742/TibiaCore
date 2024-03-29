@@ -40,9 +40,9 @@ killsMonthBanishment = 16
 -- NOTE: maxPlayers set to 0 means no limit
 ip = "127.0.01"
 bindOnlyGlobalAddress = false
-loginProtocolPort = 7173
-gameProtocolPort = 7174
-statusProtocolPort = 7173
+loginProtocolPort = 7171
+gameProtocolPort = 7172
+statusProtocolPort = 7171
 maxPlayers = 2000
 motd = "Welcome to TibiaCore!"
 onePlayerOnlinePerAccount = true
