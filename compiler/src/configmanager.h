@@ -117,6 +117,9 @@ class ConfigManager
 			NEWBIE_LEVEL_THRESHOLD,
 			MONEY_RATE,
 			HOUSE_PRICE,
+			RATE_LIFE_BED,
+			RATE_MANA_BED,
+			TICKS_REGEN_BED_GAIN,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};

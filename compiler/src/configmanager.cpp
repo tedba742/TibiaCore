@@ -128,6 +128,9 @@ bool ConfigManager::load()
 	integer[NEWBIE_LEVEL_THRESHOLD] = getGlobalNumber(L, "newbieLevelThreshold", 5);
 	integer[MONEY_RATE] = getGlobalNumber(L, "moneyRate", 1);
 	integer[HOUSE_PRICE] = getGlobalNumber(L, "multiHousePricebyRent", 1);
+	integer[RATE_LIFE_BED] = getGlobalNumber(L, "RateLifeBed", 1);
+	integer[RATE_MANA_BED] = getGlobalNumber(L, "RateManaBed", 1);
+	integer[TICKS_REGEN_BED_GAIN] = getGlobalNumber(L, "TicksRegenBedGain", 30);
 
 	loaded = true;
 	lua_close(L);

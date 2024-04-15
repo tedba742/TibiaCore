@@ -21,6 +21,11 @@ DropSpearFree = true
 DropSpearPremium = true
 MakeRuneBackpackFree = false
 MakeRuneBackpackPremium = true
+-- Every 30 seconds gains 1 regeneration, Default 30
+TicksRegenBedGain = 5
+-- Multiplies regeneration each gain, Default 1
+RateLifeBed = 2
+RateManaBed = 2
 
 -- Skull System
 banLength = 7 * 24 * 60 * 60

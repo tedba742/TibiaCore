@@ -21,10 +21,12 @@
 
 #include "bed.h"
 #include "game.h"
+#include "configmanager.h"
 #include "iologindata.h"
 #include "scheduler.h"
 
 extern Game g_game;
+extern ConfigManager g_config;
 
 BedItem::BedItem(uint16_t id) : Item(id)
 {
@@ -223,7 +225,7 @@ void BedItem::regeneratePlayer(Player* player) const
 	if (condition) {
 		uint32_t regen;
 		if (condition->getTicks() != -1) {
-			regen = std::min<int32_t>((condition->getTicks() / 1000), sleptTime) / 30;
+			regen = std::min<int32_t>((condition->getTicks() / 1000), sleptTime) / g_config.getNumber(ConfigManager::TICKS_REGEN_BED_GAIN);
 			const int32_t newRegenTicks = condition->getTicks() - (regen * 30000);
 			if (newRegenTicks <= 0) {
 				player->removeCondition(condition);
@@ -233,9 +235,9 @@ void BedItem::regeneratePlayer(Player* player) const
 		} else {
 			regen = sleptTime / 30;
 		}
-
-		player->changeHealth(regen, false);
-		player->changeMana(regen);
+		
+		player->changeHealth(regen * g_config.getNumber(ConfigManager::RATE_LIFE_BED), false);
+		player->changeMana(regen * g_config.getNumber(ConfigManager::RATE_MANA_BED));
 	}
 
 	const int32_t soulRegen = sleptTime / (60 * 15);
