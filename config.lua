@@ -23,7 +23,7 @@ MakeRuneBackpackFree = false
 MakeRuneBackpackPremium = true
 -- Every 30 seconds gains 1 regeneration, Default 30
 TicksRegenBedGain = 5
--- Duration food ticks in bed 1 = -1000 ticks per seconds, default 1
+-- Duration of food in bed ex: 1 = cherry 12 seconds, 2 = cherry 24 seconds, Default 1.
 RateNutritionBed = 1
 -- Multiplies regeneration each gain, Default 1
 RateLifeBed = 2

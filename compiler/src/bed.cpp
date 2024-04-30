@@ -224,9 +224,12 @@ void BedItem::regeneratePlayer(Player* player) const
 	Condition* condition = player->getCondition(CONDITION_REGENERATION, CONDITIONID_DEFAULT);
 	if (condition) {
 		uint32_t regen;
+		uint32_t nutri = g_config.getNumber(ConfigManager::RATE_NUTRITION_BED);
+		uint32_t ticksRegen = g_config.getNumber(ConfigManager::TICKS_REGEN_BED_GAIN);
+
 		if (condition->getTicks() != -1) {
-			regen = std::min<int32_t>((condition->getTicks() / 1000), sleptTime) / g_config.getNumber(ConfigManager::TICKS_REGEN_BED_GAIN);
-			const int32_t newRegenTicks = condition->getTicks() - (1000 / g_config.getNumber(ConfigManager::RATE_NUTRITION_BED));
+			regen = std::min<int32_t>(((condition->getTicks() * nutri) / 1000), sleptTime) / ticksRegen;
+			const int32_t newRegenTicks = (condition->getTicks() * nutri) - 60000;
 			if (newRegenTicks <= 0) {
 				player->removeCondition(condition);
 			} else {
