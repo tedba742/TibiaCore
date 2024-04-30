@@ -3989,7 +3989,7 @@ void Game::updatePremium(Account& account)
 	if (save && !IOLoginData::saveAccount(account)) {
 		std::cout << "> ERROR: Failed to save account: " << account.id << "!" << std::endl;
 	}
-	printf(">> Premium Updater Account: %d - PremiumDaysNow: %d\n", account.id, account.premiumDays);
+	//printf(">> Premium Updater Account: %d - PremiumDaysNow: %d\n", account.id, account.premiumDays);
 }
 
 void Game::loadMotdNum()

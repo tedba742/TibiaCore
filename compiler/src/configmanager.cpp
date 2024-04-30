@@ -131,6 +131,7 @@ bool ConfigManager::load()
 	integer[RATE_LIFE_BED] = getGlobalNumber(L, "RateLifeBed", 1);
 	integer[RATE_MANA_BED] = getGlobalNumber(L, "RateManaBed", 1);
 	integer[TICKS_REGEN_BED_GAIN] = getGlobalNumber(L, "TicksRegenBedGain", 30);
+	integer[RATE_NUTRITION_BED] = getGlobalNumber(L, "RateNutritionBed", 1);
 
 	loaded = true;
 	lua_close(L);

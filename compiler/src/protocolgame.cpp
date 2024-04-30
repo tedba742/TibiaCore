@@ -153,7 +153,7 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 				return;
 			}
 		}
-		std::cout << "Operating System: " << std::to_string(operatingSystem) << std::endl;
+
 		if (operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
 			player->registerCreatureEvent("ExtendedOpcode");
 		}

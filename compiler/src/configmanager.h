@@ -120,6 +120,7 @@ class ConfigManager
 			RATE_LIFE_BED,
 			RATE_MANA_BED,
 			TICKS_REGEN_BED_GAIN,
+			RATE_NUTRITION_BED,
 
 			LAST_INTEGER_CONFIG /* this must be the last one */
 		};
