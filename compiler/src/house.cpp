@@ -704,7 +704,6 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 			const uint32_t bid_end = result->getNumber<uint32_t>("bid_end");
 
 			if (bid_end <= currentTime) {
-
 				const uint32_t id = result->getNumber<uint32_t>("id");
 				const uint32_t rent = result->getNumber<uint32_t>("rent");
 				const uint32_t ownerId = result->getNumber<uint32_t>("highest_bidder");
@@ -725,7 +724,16 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 						continue;
 					}
 
-					if (g_game.removeMoney(player.getDepotLocker(house->getTownId(), true), balance + rent, FLAG_NOLIMIT)) {
+					bool bankMoney = false;
+					if (player.getBankBalance() >= (balance + rent)) {
+						bankMoney = true;
+					}
+					if (bankMoney || (g_game.removeMoney(player.getDepotLocker(house->getTownId(), true), balance + rent, FLAG_NOLIMIT) && !bankMoney)) {
+						
+						if (bankMoney) {
+							player.setBankBalance(player.getBankBalance() - (balance + rent));
+						}
+
 						time_t paidUntil = currentTime;
 						switch (rentPeriod) {
 						case RENTPERIOD_DAILY:
@@ -753,7 +761,7 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 						db->executeQuery(query.str());
 						house->setPaidUntil(paidUntil);
 						house->setOwner(ownerId, true, &player);
-						std::cout << ">>> House auction accepted: " << id << " - Player: " << player.getName() << " - Depot money: " << balance + rent << std::endl;
+						std::cout << ">>> House auction (" << id << ") set to " << player.getName() << (bankMoney ? ". Withdraw bank money: " : ". Withdraw depot money: ") << balance + rent << "." << std::endl;
 					}
 					else {
 						std::ostringstream ss;
@@ -767,7 +775,7 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 						query.str("");
 						query << "UPDATE `houses` SET `owner` = 0, `bid` = 0, `bid_end` = 0, `last_bid` = 0, `highest_bidder` = 0  WHERE `id` = " << id;
 						db->executeQuery(query.str());
-						std::cout << ">>> House auction back: " << id << " - Player not have money: " << player.getName() << " - Depot money: " << balance + rent << std::endl;
+						std::cout << ">>> House auction (" << id << ") remove from " << player.getName() << ". Player not have money" << (bankMoney ? ". Bank money: " : ". Depot money: ") << balance + rent << "." << std::endl;
 						query.str("");
 					}
 					IOLoginData::savePlayer(&player);
