@@ -2,7 +2,7 @@
 
   === Microsoft Visual Studio 2017 =======
 
-  === For Windows ============
+  === For Windows ===            
 
 git clone https://github.com/Microsoft/vcpkg
 
