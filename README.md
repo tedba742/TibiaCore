@@ -1,7 +1,7 @@
 # How Compiler
 ### Microsoft Visual Studio 2017 For Windows
 <details>
-<summary>Commands</summary>
+<summary>Windows/VCPKG Commands</summary>
   
 ```bash
 git clone https://github.com/Microsoft/vcpkg
@@ -25,9 +25,7 @@ mkdir build && cd build
 cmake ..
 make
 ```
-</details>
-
-## Build Anti-RollBack for Ubuntu
+### Build Anti-RollBack for Ubuntu
 <details>
 <summary> Ubuntu Commands with gdb</summary>
   
