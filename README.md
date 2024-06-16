@@ -1,5 +1,5 @@
 # How Compiler
-### Microsoft Visual Studio 2017 For Windows
+### Microsoft Visual Studio 2017 for Windows
 <details>
 <summary>Windows/VCPKG Commands</summary>
   
@@ -15,7 +15,7 @@ Wait for load all libs...<br>
 And copiler project!
 </details>
 
-### For Ubuntu 22.04
+### GCC for Ubuntu 22.04
 <details>
 <summary>Ubuntu Commands</summary>
   
@@ -27,7 +27,7 @@ mkdir build && cd build
 cmake ..
 make
 ```
-### Build Anti-RollBack for Ubuntu
+### GCC Build Anti-RollBack for Ubuntu
 <details>
 <summary> Ubuntu Commands with gdb</summary>
   
