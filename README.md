@@ -1,6 +1,5 @@
 # How Compiler
-## Microsoft Visual Studio 2017
-### For Windows
+### Microsoft Visual Studio 2017 For Windows
 <details>
 <summary>Commands</summary>
   
@@ -11,11 +10,11 @@ cd ./vcpkg
 ./vcpkg integrate install
 ./vcpkg install --triplet x64-windows boost-iostreams boost-asio boost-system boost-filesystem boost-variant boost-lockfree luajit libmariadb pugixml cryptopp fmt mpir
 ```
-### After go to folder open TibiaCore\compiler\vc17\theforgottenserver.vcxproj Wait for load all libs...
-### And copiler project!
+After go to folder open TibiaCore\compiler\vc17\theforgottenserver.vcxproj Wait for load all libs...
+And copiler project!
 </details>
 
-## For Ubuntu 22.04
+### For Ubuntu 22.04
 <details>
 <summary>Ubuntu Commands</summary>
   
@@ -28,7 +27,7 @@ make
 ```
 </details>
 
-Build Anti-RollBack for Ubuntu
+## Build Anti-RollBack for Ubuntu
 <details>
 <summary> Ubuntu Commands with gdb</summary>
   
