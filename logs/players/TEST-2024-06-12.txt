@@ -1,0 +1,9 @@
+06:16:04 move to: purple backpack < sudden death rune, 1
+06:17:36 say: hi
+06:17:44 say: 5 blank rune
+06:17:47 say: yes
+06:17:47 move to: backpack < blank rune, 1
+06:17:47 move to: backpack < blank rune, 1
+06:17:48 move to: backpack < blank rune, 1
+06:17:48 move to: backpack < blank rune, 1
+06:17:48 move to: backpack < blank rune, 1
