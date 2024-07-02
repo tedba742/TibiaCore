@@ -148,8 +148,7 @@ void mainLoader(int, char*[], ServiceManager* services)
 
 	std::cout << "A server developed by " << STATUS_SERVER_DEVELOPERS << std::endl;
 	std::cout << "Visit our forum for updates, support, and resources: http://otland.net/." << std::endl;
-	std::cout << "Re-edited by Roberto Carlos Preguica, otserv only runs on Tibia 7.4!" << std::endl;
-	std::cout << "Does not use client 7.72 because it generates bug with invisibility of gamemaster and warlock." << std::endl;
+	std::cout << "Re-edited by Roberto Carlos Preguica, GitHub Project: https://github.com/RCP91/TibiaCore" << std::endl;
 	std::cout << std::endl;
 
 	// read global config
@@ -186,7 +185,7 @@ void mainLoader(int, char*[], ServiceManager* services)
 	std::cout << ">> Running database manager" << std::endl;
 
 	if (!DatabaseManager::isDatabaseSetup()) {
-		startupErrorMessage("The database you have specified in config.lua is empty, please import the schema.sql to your database.");
+		startupErrorMessage("The database you have specified in config.lua is empty, please import the tibiacore-empty.sql to your database.");
 		return;
 	}
 	g_databaseTasks.start();

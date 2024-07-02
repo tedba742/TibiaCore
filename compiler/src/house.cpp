@@ -761,7 +761,7 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 						db->executeQuery(query.str());
 						house->setPaidUntil(paidUntil);
 						house->setOwner(ownerId, true, &player);
-						std::cout << ">>> House auction (" << id << ") set to " << player.getName() << (bankMoney ? ". Withdraw bank money: " : ". Withdraw depot money: ") << balance + rent << "." << std::endl;
+						std::cout << ">> House auction (" << id << ") set to " << player.getName() << (bankMoney ? ". Withdraw bank money: " : ". Withdraw depot money: ") << balance + rent << "." << std::endl;
 					}
 					else {
 						std::ostringstream ss;
@@ -775,7 +775,7 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 						query.str("");
 						query << "UPDATE `houses` SET `owner` = 0, `bid` = 0, `bid_end` = 0, `last_bid` = 0, `highest_bidder` = 0  WHERE `id` = " << id;
 						db->executeQuery(query.str());
-						std::cout << ">>> House auction (" << id << ") remove from " << player.getName() << ". Player not have money" << (bankMoney ? ". Bank money: " : ". Depot money: ") << balance + rent << "." << std::endl;
+						std::cout << ">> House auction (" << id << ") remove from " << player.getName() << ". Player not have money" << (bankMoney ? ". Bank money: " : ". Depot money: ") << balance + rent << "." << std::endl;
 						query.str("");
 					}
 					IOLoginData::savePlayer(&player);
@@ -783,5 +783,5 @@ void Houses::auctionsHouses(RentPeriod_t rentPeriod) const
 			}
 		} while (result->next());
 	}
-	std::cout << ">>> Houses Auctions: Done! " << std::endl;
+	std::cout << ">> Houses Auctions: Done! " << std::endl;
 }
