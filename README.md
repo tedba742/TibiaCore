@@ -39,3 +39,7 @@ cmake -D CMAKE_BUILD_TYPE=RelWithDebInfo ..
 make
 ```
 </details>
+</details>
+<hr>
+# Doar qualquer valor para Pix: +55 67 99941-1154<br>
+# Donate any amount via PayPal: roberto.cpmg@gmail.com
