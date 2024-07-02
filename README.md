@@ -40,6 +40,6 @@ make
 ```
 </details>
 </details>
-<hr><br>
+<hr>
 # Doar qualquer valor para Pix: +55 67 99941-1154<br>
 # Donate any amount via PayPal: roberto.cpmg@gmail.com
