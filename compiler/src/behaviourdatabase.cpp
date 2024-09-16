@@ -1195,10 +1195,6 @@ int32_t BehaviourDatabase::searchDigit(const std::string& message)
 		return 0;
 	}
 
-	if (value > 500) {
-		value = 500;
-	}
-
 	return value;
 }
 
