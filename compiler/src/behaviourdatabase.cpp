@@ -19,6 +19,7 @@
 
 #include "otpch.h"
 
+#include "iologindata.h"
 #include "behaviourdatabase.h"
 #include "npc.h"
 #include "player.h"
@@ -288,6 +289,11 @@ bool BehaviourDatabase::loadActions(ScriptReader& script, NpcBehaviour* behaviou
 			} else if (identifier == "deposit") {
 				action->type = BEHAVIOUR_TYPE_DEPOSIT;
 				searchType = BEHAVIOUR_PARAMETER_ONE;
+			} else if (identifier == "transfer") {
+				action->type = BEHAVIOUR_TYPE_TRANSFER;
+				searchType = BEHAVIOUR_PARAMETER_ONE;
+			} else if (identifier == "transfertoplayernamestate") {
+				action->type = BEHAVIOUR_TYPE_MESSAGE_TRANSFERTOPLAYERNAME_STATE;
 			} else if (identifier == "bless") {
 				action->type = BEHAVIOUR_TYPE_BLESS;
 				searchType = BEHAVIOUR_PARAMETER_ONE;
@@ -978,6 +984,49 @@ void BehaviourDatabase::checkAction(const NpcBehaviourAction* action, Player* pl
 	case BEHAVIOUR_TYPE_DEPOSIT: {
 		int32_t money = evaluate(action->expression, player, message);
 		player->setBankBalance(player->getBankBalance() + money);
+		break;
+	}
+	case BEHAVIOUR_TYPE_TRANSFER: {
+		int32_t money = evaluate(action->expression, player, message);
+		uint16_t state = 0;
+		Player* transferToPlayer = g_game.getPlayerByName(string);
+		if (!transferToPlayer) {
+			state = IOLoginData::canTransferMoneyToByName(string);
+		}
+		else {
+			state = transferToPlayer->getVocationId() == 0 ? 1 : 2;
+		}
+
+		if (state != 2) {
+			break;
+		}
+		player->setBankBalance(player->getBankBalance() - money);
+
+		if (!transferToPlayer) {
+			IOLoginData::increaseBankBalance(string, money);
+		}
+		else {
+			transferToPlayer->setBankBalance(transferToPlayer->getBankBalance() + money);
+		}
+
+		break;
+	}
+	case BEHAVIOUR_TYPE_MESSAGE_TRANSFERTOPLAYERNAME_STATE: {
+		std::string lowerMessage = asLowerCaseString(message);
+		if (lowerMessage.find("to ") != std::string::npos) {
+			string = asCamelCaseString(message.substr(lowerMessage.find("to ") + 3, message.size()));
+		}
+		else {
+			string = asCamelCaseString(message);
+		}
+
+		Player* transferToPlayer = g_game.getPlayerByName(string);
+		if (!transferToPlayer) {
+			IOLoginData::canTransferMoneyToByName(string);
+			break;
+		}
+
+		transferToPlayer->getVocationId() == 0 ? 1 : 2;
 		break;
 	}
 	case BEHAVIOUR_TYPE_BLESS: {
