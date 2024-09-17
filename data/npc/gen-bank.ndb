@@ -118,6 +118,8 @@ Topic=214,"yes" -> "Here you are.", Withdraw(Amount), Price=Amount, CreateMoney
 
 Topic=214 -> "Maybe some other time then."  # Handle cases where the user does not confirm the withdrawal
 
+# Transfer
+
 "transfer" -> "Please tell me the amount of gold you would like to transfer.", Topic=85
 "transfer","0","to" -> "Please think about it. Okay?"
 "transfer",$1,0<$1,"to",Balance<$1 -> "There is not enough gold on your account."
@@ -136,4 +138,3 @@ Topic=87 -> "Ok. What is next?"
 Topic=88,"yes",Balance>=Price -> "Very well. You have transferred %P gold to %S.", Transfer(Price)
 Topic=88,"yes" -> "I am inconsolable, but it seems you don't have that many gold in your bank account."
 Topic=88 -> "Alright, is there something else I can do for you?"
-

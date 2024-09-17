@@ -41,7 +41,6 @@ void toLowerCaseString(std::string& source);
 std::string asLowerCaseString(std::string source);
 std::string asUpperCaseString(std::string source);
 std::string asCamelCaseString(std::string source);
-
 typedef std::vector<std::string> StringVec;
 typedef std::vector<int32_t> IntegerVec;
 
