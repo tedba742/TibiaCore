@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, tedba-main ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies (cmake >=3.22)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common gnupg build-essential
+          sudo apt-get remove -y cmake || true
+          sudo mkdir -p /etc/apt/keyrings
+          curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | sudo gpg --dearmor -o /etc/apt/keyrings/kitware-archive-keyring.gpg
+          echo "deb [signed-by=/etc/apt/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/kitware.list
+          sudo apt-get update
+          sudo apt-get install -y cmake
+
+      - name: Configure (tests only)
+        working-directory: compiler
+        run: cmake --preset coverage
+
+      - name: Build tests
+        working-directory: compiler
+        run: cmake --build --preset coverage-build
+
+      - name: Run tests
+        working-directory: compiler
+        run: ctest --preset coverage-test --output-on-failure
