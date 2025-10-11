@@ -110,16 +110,16 @@ rateManaBed = 2
 
 -- Connection Config
 -- NOTE: maxPlayers set to 0 means no limit
-ip = "127.0.01"
+ip = "127.0.0.1"
 bindOnlyGlobalAddress = false
 loginProtocolPort = 7171
 gameProtocolPort = 7172
 statusProtocolPort = 7171
 maxPlayers = 2000
-motd = "Welcome to TibiaCore!"
+motd = "Welcome to Mystic!"
 onePlayerOnlinePerAccount = true
 allowClones = false
-serverName = "TibiaCore"
+serverName = "Mystic"
 statusTimeout = 5000
 replaceKickOnLogin = true
 maxPacketsPerSecond = -1
@@ -146,9 +146,9 @@ mapName = "map"
 mapAuthor = "CipSoft"
 
 -- MySQL
-mysqlHost = "127.0.0.1"
+mysqlHost = "db"
 mysqlUser = "root"
-mysqlPass = ""
+mysqlPass = "Tedheterjagguccigangtedtedtedlololol123123123123123"
 mysqlDatabase = "tibiacore"
 mysqlPort = 3306
 mysqlSock = ""
@@ -195,5 +195,5 @@ startupDatabaseOptimization = true
 -- Status server information
 ownerName = "RcPmG"
 ownerEmail = ""
-url = "tibiacore.servegame.com"
-location = "Brazil"
+url = "127.0.0.1"
+location = "Sweden"

@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-a2enmod php8.1
+#a2enmod php8.1
 
 OT_DB_HOST="${OT_DB_HOST:-127.0.0.1}"
 OT_DB_PORT="${OT_DB_PORT:-3306}"

@@ -2,7 +2,7 @@ FROM php:8.1-apache
 
 # Enable Apache rewrite module
 RUN a2enmod rewrite
-
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 # Install required PHP extensions
 RUN apt-get update && apt-get install -y \
     libzip-dev zip \
