@@ -1,0 +1,29 @@
+Start testing: May 10 20:43 CEST
+----------------------------------------------------------
+1/1 Testing: unit_tests
+1/1 Test: unit_tests
+Command: "/home/ted/Desktop/projects/ots/TibiaCore/compiler/build/coverage/unit_tests"
+Directory: /home/ted/Desktop/projects/ots/TibiaCore/compiler/build/coverage
+"unit_tests" start time: May 10 20:43 CEST
+Output:
+----------------------------------------------------------
+Running main() from /home/ted/Desktop/projects/ots/TibiaCore/compiler/build/coverage/_deps/googletest-src/googletest/src/gtest_main.cc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Sanity
+[ RUN      ] Sanity.BasicArithmetic
+[       OK ] Sanity.BasicArithmetic (0 ms)
+[----------] 1 test from Sanity (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"unit_tests" end time: May 10 20:43 CEST
+"unit_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 10 20:43 CEST

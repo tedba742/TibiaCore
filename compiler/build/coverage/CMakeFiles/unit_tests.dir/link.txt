@@ -1,0 +1,1 @@
+/usr/bin/c++ --coverage -g --coverage CMakeFiles/unit_tests.dir/tests/test_sanity.cpp.o -o unit_tests  lib/libgtest_main.a lib/libgtest.a 
