@@ -33,6 +33,7 @@ core.*
 # Local configs/secrets
 mysql_root_password.txt
 key.pem
+.env
 
 # Node/vendor (web assets)
 myaac-1.7.1/node_modules/

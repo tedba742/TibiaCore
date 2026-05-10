@@ -12,3 +12,4 @@ config.lua
 /data - Copia
 /logs
 mysql_root_password.txt
+.env

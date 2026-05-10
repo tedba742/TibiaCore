@@ -1,7 +1,8 @@
 services:
   db:
     image: mysql:8.0
-    container_name: db
+    container_name: tibiacore-db
+    restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: tibiacore
@@ -9,13 +10,23 @@ services:
       - tibiacore_data:/var/lib/mysql
       - ./tibiacore.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "3306:3306"
+      - "127.0.0.1:3306:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks:
+      - tibiacore
 
   web:
     build: .
     container_name: myaac-web-container
+    restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "80:80"
     environment:
@@ -26,26 +37,34 @@ services:
     volumes:
       - ./myaac-1.7.1/:/var/www/html/:rw
       - ./config.lua:/var/www/html/config.lua:rw
-      - ./tibiacore.sql:/docker-entrypoint-initdb.d/init.sql
       - ./data/:/var/www/html/data/:rw
+    networks:
+      - tibiacore
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: myaac-phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - "8080:80"
+    networks:
+      - tibiacore
 
-  tibiacore_game:
+  tibiacore-game:
     build:
       context: .
       dockerfile: Dockerfile.tibiaImage
     container_name: tibiacore-game
     restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       DB_HOST: db
       DB_NAME: tibiacore
@@ -59,6 +78,12 @@ services:
     ports:
       - "7171:7171"
       - "7172:7172"
+    networks:
+      - tibiacore
 
 volumes:
   tibiacore_data:
+
+networks:
+  tibiacore:
+    name: tibiacore
